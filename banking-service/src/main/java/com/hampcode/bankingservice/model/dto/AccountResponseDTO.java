@@ -1,4 +1,4 @@
 package com.hampcode.bankingservice.model.dto;
 
-public class TransactionDTO {
+public class AccountResponseDTO {
 }
