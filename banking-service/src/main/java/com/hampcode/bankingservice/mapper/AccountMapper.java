@@ -23,7 +23,7 @@ public class AccountMapper {
         return modelMapper.map(account, AccountResponseDTO.class);
     }
 
-    public List<AccountResponseDTO>  convertToDTO(List<Account> accounts){
+    public List<AccountResponseDTO>  convertToListDTO(List<Account> accounts){
         return accounts.stream()
                 .map(this::convertToDTO)
                 .toList();
