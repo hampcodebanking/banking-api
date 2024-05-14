@@ -34,13 +34,12 @@ public class TransactionService {
 
     @Transactional
     public TransactionResponseDTO createTransaction(TransactionRequestDTO transactionDTO) {
-        // Obtener las cuentas involucradas en la transacción y // Verificar si las cuentas existen
+        // Obtener las cuentas involucradas en la transacción y verificar si existen
         Account sourceAccount = accountRepository.findByAccountNumber(transactionDTO.getSourceAccountNumber())
                 .orElseThrow(() -> new ResourceNotFoundException("La cuenta de origen no existe"));
 
-        Account targetAccount = accountRepository.findByAccountNumber(transactionDTO.getSourceAccountNumber())
+        Account targetAccount = accountRepository.findByAccountNumber(transactionDTO.getTargetAccountNumber())
                 .orElseThrow(() -> new ResourceNotFoundException("La cuenta de destino no existe"));
-
 
         // Verificar si el saldo de la cuenta de origen es suficiente para realizar la transacción
         BigDecimal amount = transactionDTO.getAmount();
@@ -50,7 +49,7 @@ public class TransactionService {
         }
 
         // Realizar la transacción
-        Transaction transaction= transactionMapper.convertToEntity(transactionDTO);
+        Transaction transaction = transactionMapper.convertToEntity(transactionDTO);
         transaction.setTransactionDate(LocalDate.now());
         transaction.setSourceAccount(sourceAccount);
         transaction.setTargetAccount(targetAccount);
@@ -58,10 +57,10 @@ public class TransactionService {
 
         // Actualizar los saldos de las cuentas
         BigDecimal newSourceAccountBalance = sourceAccountBalance.subtract(amount);
-        BigDecimal targetAccountBalance = targetAccount.getBalance().add(amount);
+        BigDecimal newTargetAccountBalance = targetAccount.getBalance().add(amount);
 
         sourceAccount.setBalance(newSourceAccountBalance);
-        targetAccount.setBalance(targetAccountBalance);
+        targetAccount.setBalance(newTargetAccountBalance);
 
         // Guardar los cambios en las cuentas
         accountRepository.save(sourceAccount);
@@ -69,6 +68,8 @@ public class TransactionService {
 
         return transactionMapper.convertToDTO(transaction);
     }
+
+
 
 
     @Transactional(readOnly =true )
