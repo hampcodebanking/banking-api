@@ -4,7 +4,7 @@ import com.hampcode.bankingservice.model.dto.TransactionReportDTO;
 import com.hampcode.bankingservice.model.dto.TransactionRequestDTO;
 import com.hampcode.bankingservice.model.dto.TransactionResponseDTO;
 import com.hampcode.bankingservice.services.TransactionService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/transactions")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TransactionController {
 
     private final TransactionService transactionService;
