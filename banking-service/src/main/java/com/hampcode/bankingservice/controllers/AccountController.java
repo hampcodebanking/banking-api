@@ -3,7 +3,7 @@ package com.hampcode.bankingservice.controllers;
 import com.hampcode.bankingservice.model.dto.AccountRequestDTO;
 import com.hampcode.bankingservice.model.dto.AccountResponseDTO;
 import com.hampcode.bankingservice.services.AccountService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/accounts")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountController {
 
     private final AccountService accountService;
