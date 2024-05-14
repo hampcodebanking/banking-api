@@ -6,7 +6,7 @@ import com.hampcode.bankingservice.model.dto.AccountRequestDTO;
 import com.hampcode.bankingservice.model.dto.AccountResponseDTO;
 import com.hampcode.bankingservice.model.entities.Account;
 import com.hampcode.bankingservice.repository.AccountRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountService {
 
     private final AccountRepository accountRepository;
