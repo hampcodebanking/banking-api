@@ -1,0 +1,3 @@
+com\hampcode\bankingservice\BankingServiceApplicationTests.class
+com\hampcode\bankingservice\service\TransactionServiceTest.class
+com\hampcode\bankingservice\service\AccountServiceTest.class

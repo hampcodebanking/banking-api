@@ -20,7 +20,7 @@ services:
   banking_db_server:
     image: postgres:13
     ports:
-      - "5433:5432"  
+      - "5433:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
